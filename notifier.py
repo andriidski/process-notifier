@@ -1,5 +1,6 @@
 # author: Andrii Dobroshynskyi
 import os
+import sys
 import subprocess
 import time
 
@@ -7,6 +8,14 @@ flag = "--NOTIFY"
 currentlyRunningFlagged = {}
 
 debug = False
+
+# custom flag option
+if len(sys.argv) == 2:
+    customFlag = sys.argv[1]
+    if customFlag[0] == '-' and customFlag[1] == '-':
+        flag = customFlag
+    else:
+        print "flag in invalid format: please use --[flag_name]"
 
 # cleans up process name of --notify flag for display in notification
 def cleanProcessName(processString):
